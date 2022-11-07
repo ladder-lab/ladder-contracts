@@ -1,0 +1,63 @@
+{
+  "name": "@ladder/ladder-contracts",
+  "description": "🎛 Core contracts for the ladder protocol",
+  "version": "1.0.1",
+  "homepage": "https://www.ladder.top/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ladder-lab/ladder-contracts"
+  },
+  "keywords": [
+    "ladder",
+    "ethereum",
+    "core",
+    "nft",
+    "nft-721"
+  ],
+  "files": [
+    "contracts",
+    "build"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@openzeppelin/contracts": "^4.7.3",
+    "@openzeppelin/contracts-upgradeable": "^4.7.3",
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "dotenv": "^16.0.1",
+    "ethereum-waffle": "^2.4.1",
+    "ethereumjs-util": "^6.2.0",
+    "hardhat": "^2.10.1",
+    "hardhat-contract-sizer": "^2.5.1",
+    "hardhat-deploy": "^0.11.10",
+    "mocha": "^10.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "solc": "0.8.9",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "lint": "yarn prettier ./test/*.ts ./deploy/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts ./deploy/*.ts --write",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "waffle .waffle.json",
+    "hardhat:compile": "hardhat compile",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "prepublishOnly": "yarn test",
+    "hardhat:deploy": "hardhat --network hardhat deploy",
+    "goerli:deploy": "hardhat --network goerli deploy",
+    "goerli:verify": "hardhat --network goerli etherscan-verify --license GPL-3.0 --force-license",
+    "rinkeby:deploy": "hardhat --network rinkeby deploy",
+    "rinkeby:verify": "hardhat --network rinkeby etherscan-verify --license GPL-3.0 --force-license",
+    "bsc:deploy": "hardhat --network bsc deploy",
+    "bsc:verify": "hardhat --network bsc etherscan-verify --license GPL-3.0 --force-license"
+  },
+  "license": "GPL-3.0-or-later"
+}
